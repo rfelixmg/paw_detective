@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+    debug: &debug
+      image: paw:latest
+      build:
+        context: .
+        dockerfile: app/Dockerfile
+      runtime: nvidia
+      deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                device_ids: ["0"]
+                capabilities: [gpu]
+      volumes:
+        - ./:/opt/dev
+        - /usr/local/cuda:/usr/local/cuda
+      stdin_open: True
+
+    jupyter:
+      << : *debug
+      ports:
+        - "8000:8000"
+      entrypoint: ["jupyter-lab", "--ip", "0.0.0.0", "--port", "8000", "--allow-root"]
