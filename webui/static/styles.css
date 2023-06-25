@@ -135,23 +135,23 @@ hr {
     z-index: -1;
 }
 
-#upload-button, #investigate-button {
+#investigate-button {
     display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
+    padding: 15px 200px;
+    margin-top: 5px;
     color: #fff;
     background-color: #007BFF;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-#upload-button:hover, #investigate-button:hover {
+#investigate-button:hover {
     background-color: #0056b3;
 }
 
 .investigate-area {
     text-align: center;  /* centers the Investigate button */
-    margin-top: 20px;  /* adds space above the Investigate button */
+    margin-top: 10px;  /* adds space above the Investigate button */
 }

@@ -15,15 +15,22 @@ def home() -> render_template:
 def get_results() -> render_template:
     if "file" not in request.files:
         return "No file part"
+
     file = request.files["file"]
     if file.filename == "":
-        return "No selected file"
-    if file:
-        print("Original filename: ", file.filename)  # Add this line
-        print("Secure filename: ", secure_filename(file.filename))  # And this line
+        results = dict(
+            breed="Staffordshire Bull Terrier", confidence=0.96 * 100, mask=[]
+        )
+        filename = "no_sample_example.jpg"
+    else:
+        results = dict(
+            breed="Staffordshire Bull Terrier", confidence=0.96 * 100, mask=[]
+        )
+
         filename = secure_filename(file.filename)
         file.save(os.path.join("static/uploads", filename))
-        return render_template("results.html", image_filename=filename)
+
+    return render_template("results.html", image_filename=filename, results=results)
 
 
 if __name__ == "__main__":

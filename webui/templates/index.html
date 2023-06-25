@@ -9,16 +9,16 @@
 <body>
     <header>
         <h1>Welcome to Paw Detective!</h1>
-        <p>Upload a photo and let our AI find your furry friends.</p>
+        <h3>Upload a photo and let our AI find your furry friends.</h3>
         <img id="header-img" src="../static/images/header.png" alt="Header image">
     </header>
 
     <main>
         <section class="upload-section">
-            <h2>Upload a photo of your furry friend</h2>
+<!--            <h2>Upload a photo of your furry friend</h2>-->
             <form action="/results" method="post" enctype="multipart/form-data" id="upload-form">
                 <div id="drop-area">
-                  <p>Drag and drop a file here or click the "Upload" button</p>
+                  <p>Drag and drop a file here</p>
                   <input type="file" id="file-input" name="file">
                 </div>
                 <button type="submit" id="investigate-button">
@@ -30,7 +30,7 @@
 
         <hr>
         <section class="image-section">
-            <h2>Your furry friend</h2>
+            <h2>This is your furry friend</h2>
             <div class="img-wrapper">
                 <img id="displayed-image" src="../static/images/example.jpg" alt="Uploaded image will be displayed here">
             </div>
