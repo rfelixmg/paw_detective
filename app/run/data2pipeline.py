@@ -6,6 +6,7 @@ from typing import Dict
 
 import cv2
 import yaml
+from numpy.typing import ArrayLike
 
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
@@ -27,6 +28,10 @@ def get_class2id(filepath: str) -> Dict:
         statics = yaml.safe_load(file)
         class2id = {value: key for key, value in statics["names"].items()}
     return class2id
+
+
+def contour2segmentation(contours: ArrayLike, height: int, width: int) -> str:
+    return " ".join([f"{str(x / width)} {str(y / height)}" for (x, y) in contours])
 
 
 def main() -> None:
@@ -59,21 +64,24 @@ def main() -> None:
 
             # Extracting countor
             mask_path = f"/data/data/{sample.id}/mask.jpg"
-            segmentations = mask2segmentation(mask_path)
+            contours = mask2segmentation(mask_path)
             image = cv2.imread(f"/data/{split}/masks/{sample.id}.jpg", 0)[
                 :, :, None
             ].repeat(3, -1)
             contour_image = cv2.drawContours(
-                image, segmentations, -1, (0, 0, 255), thickness=3
+                image, contours, -1, (0, 0, 255), thickness=3
             )
+            height, width, _ = contour_image.shape
             filepath = f"/data/{split}/masks/{sample.id}_contour.jpg"
             cv2.imwrite(filepath, contour_image)
 
             # Converting contour to flat list
             with open(f"/data/{split}/labels/{sample.id}.txt", "w") as fp:
-                for pid, segmentation in zip(sample.breed, segmentations):
-                    seg = " ".join([str(i) for i in segmentation.flatten()])
-                    fp.write(f"{class2id[pid]} {seg}")
+                for breed, coordinates in zip(sample.breed, contours):
+                    seg = contour2segmentation(
+                        contours=coordinates.squeeze(), height=height, width=width
+                    )
+                    fp.write(f"{class2id[breed]} {seg}")
 
 
 if __name__ == "__main__":

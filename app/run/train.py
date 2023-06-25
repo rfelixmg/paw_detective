@@ -1,17 +1,23 @@
 import argparse
+import os
 from typing import Any
-
 from ultralytics import YOLO
+from paw.utils import experiments
 
 
 def main() -> Any:
-    model = YOLO("yolov8n-seg.pt")
+    experiment_path = f"/output/{experiments.name_generator()}"
+    os.makedirs(experiment_path, exist_ok=True)
+
+    model = YOLO("/weights/yolov8n-seg.pt")
     results = model.train(
         batch=args.batch,
-        device="cpu",
+        device=args.device,
         data=args.config,
-        epochs=args.epoch,
+        epochs=args.epochs,
         imgsz=args.image_size,
+        project=experiment_path,
+        workers=0,
     )
     return results
 
@@ -24,9 +30,10 @@ if __name__ == "__main__":
         type=str,
         required=True,
     )
-    parser.add_argument("--epoch", type=int, default=32)
+    parser.add_argument("--epochs", type=int, default=32)
     parser.add_argument("--batch", type=int, default=32)
-    parser.add_argument("--image_size", type=int, default=224)
+    parser.add_argument("--device", type=str, default="cpu")
+    parser.add_argument("--image_size", type=int, default=320)
     args = parser.parse_args()
 
     main()

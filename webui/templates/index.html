@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paw Detective</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Paw Detective!</h1>
+        <p>Upload a photo and let our AI find your furry friends.</p>
+        <img id="header-img" src="../static/images/header.png" alt="Header image">
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <h2>Upload a photo of your furry friend</h2>
+            <form action="/results" method="post" enctype="multipart/form-data" id="upload-form">
+                <div id="drop-area">
+                  <p>Drag and drop a file here or click the "Upload" button</p>
+                  <input type="file" id="file-input" name="file">
+                </div>
+                <button type="submit" id="investigate-button">
+                    <i class="fas fa-search"></i> Investigate
+                </button>
+            </form>
+        </section>
+        <br/> <br/> <br/> <br/>
+
+        <hr>
+        <section class="image-section">
+            <h2>Your furry friend</h2>
+            <div class="img-wrapper">
+                <img id="displayed-image" src="../static/images/example.jpg" alt="Uploaded image will be displayed here">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Paw Detective. All rights reserved.</p>
+    </footer>
+
+    <script src="../static/scripts.js"></script>
+</body>
+</html>

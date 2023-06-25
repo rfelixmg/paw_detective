@@ -1,6 +1,8 @@
-train: train/images
-val: val/images
-test: test/images
+train: /data/train/images
+val: /data/val/images
+test: /data/test/images
+num_workers: 0
+ipc: host
 
 names:
   0: Abyssinian

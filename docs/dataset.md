@@ -1,6 +1,18 @@
 # Cats and dogs `dataset`
 
-## Downloading the dataset
+## Processed dataset
+
+```bash
+wget https://tinyurl.com/msvwtpzw
+unzip cats_and_dogs.zip -o cats_and_dogs/
+
+DATASET_DIR=$PWD/cats_and_dogs/
+
+# or un-comment line 22 on docker-compose.yml and:
+export DATASET_DIR=$PWD/cats_and_dogs/
+```
+
+## Downloading & Processing the dataset
 
 ```bash
 wget https://tinyurl.com/msvwtpzw

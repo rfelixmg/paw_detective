@@ -3,6 +3,8 @@ version: "3.7"
 services:
     debug: &debug
       image: paw:latest
+      env_file:
+        - .env
       build:
         context: .
         dockerfile: app/Dockerfile
@@ -17,12 +19,14 @@ services:
       volumes:
         - ./:/opt/dev/
         - /usr/local/cuda:/usr/local/cuda
-        - /fastio/datasets/cats_and_dogs/:/data/
-#        - ${DATASET_DIR}:/data/
+        - ${DATASET_DIR}:/data/
+        - ${WEIGHTS}:/weights/
+        - ${OUTPUT_DIR}:/output/
       stdin_open: True
 
     jupyter:
       << : *debug
+      container_name: paw_jupyter
       ports:
         - "8000:8000"
       environment:
@@ -37,3 +41,23 @@ services:
         pip install -e . && \
         python -m app.run.data2pipeline --config ./app/config/train.yaml --singles
         "
+
+    training:
+      << : *debug
+      container_name: paw_training
+      command:
+        bash -c "
+        pip install -e . && \
+        python -m app.run.train --config ./app/config/train.yaml --epochs 32 --device 0 --batch 64
+        "
+    webui:
+      image: webui:latest
+      build:
+        context: .
+        dockerfile: webui/Dockerfile
+      ports:
+        - "5000:5000"
+      volumes:
+        - ./webui/:/app/
+      stdin_open: True
+      entrypoint: ["python", "app.py"]

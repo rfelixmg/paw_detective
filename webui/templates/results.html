@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paw Detective | Results</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Your Paw Detective Results!</h1>
+    </header>
+
+    <main>
+        <section class="image-section">
+            <h2>Here's the photo you uploaded:</h2>
+            <div class="img-wrapper">
+                <img id="displayed-image" src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded image">
+            </div>
+        </section>
+        <hr>
+        <section class="results-section">
+            <h2>Here are the results:</h2>
+            <div class="results-wrapper">
+                <!-- Display your results here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Paw Detective. All rights reserved.</p>
+    </footer>
+</body>
+</html>

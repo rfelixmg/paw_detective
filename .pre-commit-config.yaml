@@ -13,11 +13,14 @@ repos:
           - "flake8-annotations==2.9.0"
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.4.0
+    rev: v0.950
     hooks:
     -   id: mypy
+        verbose: true
+
         additional_dependencies:
           - "types-PyYAML"
+          - "types-setuptools"
 
   - repo: https://github.com/psf/black
     rev: 23.3.0
