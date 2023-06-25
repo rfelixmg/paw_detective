@@ -15,12 +15,25 @@ services:
                 device_ids: ["0"]
                 capabilities: [gpu]
       volumes:
-        - ./:/opt/dev
+        - ./:/opt/dev/
         - /usr/local/cuda:/usr/local/cuda
+        - /fastio/datasets/cats_and_dogs/:/data/
+#        - ${DATASET_DIR}:/data/
       stdin_open: True
 
     jupyter:
       << : *debug
       ports:
         - "8000:8000"
+      environment:
+        - JUPYTER_TOKEN=rafa
       entrypoint: ["jupyter-lab", "--ip", "0.0.0.0", "--port", "8000", "--allow-root"]
+
+    data2pipeline:
+      << : *debug
+      container_name: paw_data2pipeline
+      command:
+        bash -c "
+        pip install -e . && \
+        python -m app.run.data2pipeline --config ./app/config/train.yaml --singles
+        "
