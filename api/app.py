@@ -1,9 +1,12 @@
+import numpy as np
 import uvicorn
 import pydantic
 import logging
 
 from os import environ
 from typing import Dict
+
+from PIL import Image
 from ultralytics import YOLO
 
 from fastapi import FastAPI
@@ -62,6 +65,36 @@ def predict(body: InputItem) -> ResponseItems:
     else:
         logging.error(f"Fail on input {body.input_src} and output {body.output_path}")
     return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(f"/{VERSION}/batch_singles/", response_model=Dict)
+def batch_singles(samples: int) -> dict[str, float | str]:
+    import time
+
+    image_path = "./examples/example.jpg"
+    image = np.asarray(Image.open(image_path))
+    images = [image + np.random.random()] * samples
+    print(len(images))
+
+    start_time = time.time()
+    [model(i) for i in images]
+    elapsed_time = time.time() - start_time
+    return dict(time=elapsed_time, unit="seconds")
+
+
+@app.get(f"/{VERSION}/batch_stream/", response_model=Dict)
+def batch_stream(samples: int) -> dict[str, float | str]:
+    import time
+
+    image_path = "./examples/example.jpg"
+    image = np.asarray(Image.open(image_path))
+    images = [image + np.random.random()] * samples
+    print(len(images))
+
+    start_time = time.time()
+    model(images, stream=True, save=False)
+    elapsed_time = time.time() - start_time
+    return dict(time=elapsed_time, unit="seconds")
 
 
 @app.get("/ping")

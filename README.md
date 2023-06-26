@@ -3,7 +3,8 @@
 Paw Detective is a pet detection system that utilizes Ultralytics and YOLOv8 to detect
 and classify various pet breeds in images. This repository provides a complete training
 pipeline, data processing utilities, and a Flask application for online interaction with
-the trained model.
+the trained model. For a more informative discussion on the project, please refer to
+[Flask & fastapi application](./docs/application.md).
 
 # TL;DR <a name="tldr"></a>
 ### Training:
@@ -11,6 +12,7 @@ the trained model.
 2. [Weights](./docs/weights.md)
 3. [Training model](./docs/training.md)
 3. [Flask & fastapi application](./docs/application.md)
+
 
 
 ## Dataset
