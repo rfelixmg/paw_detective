@@ -6,32 +6,41 @@
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Paw Detective!</h1>
-        <h3>Upload a photo and let our AI find your furry friends.</h3>
-        <img id="header-img" src="../static/images/header.png" alt="Header image">
-    </header>
+    {% include 'includes/header.html' %}
+
 
     <main>
+<!--        <section class="image-section">-->
+<!--            <h2>Our detective has identified your furry friend:</h2>-->
+<!--            <div class="img-wrapper">-->
+<!--                <img id="displayed-image" src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded image">-->
+<!--            </div>-->
+<!--        </section>-->
         <section class="image-section">
             <h2>Our detective has identified your furry friend:</h2>
-            <div class="img-wrapper">
-                <img id="displayed-image" src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded image">
+            <div class="img-wrapper-results">
+                <img id="displayed-image-1" src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded image 1">
+                <img id="displayed-image-2" src="{{ url_for('static', filename='results/' + image_filename) }}" alt="Uploaded image 2">
             </div>
         </section>
+
         <hr>
         <section class="results-section">
             <h2>Here are the results:</h2>
             <div class="results-wrapper">
-                <p> Breed: {{ results['breed'] }}</p>
-                <p> Confidence: {{ results['confidence'] }}%</p>
+                {% block content %}
+                    {% for result in results %}
+                        <p> Breed: {{ result['breed'] }}</p>
+                        <p> Confidence: {{ result['confidence'] }}%</p>
+                        <hr />
+                    {% endfor %}
+                {% endblock %}
 
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2023 Paw Detective. All rights reserved.</p>
-    </footer>
+    {% include 'includes/footer.html' %}
+
 </body>
 </html>

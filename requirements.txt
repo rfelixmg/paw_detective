@@ -4,6 +4,7 @@ Flask==2.3.2
 fastapi==0.89.1
 pydantic==1.10.7
 plotly==5.14.1
+uvicorn
 # wandb==0.14.0
 # tensorrt==8.6.0
 # uvicorn==0.20.0

@@ -8,6 +8,9 @@ services:
       build:
         context: .
         dockerfile: app/Dockerfile
+        args:
+          - "--include=*.txt"
+          - "--include=*.jpg"
       runtime: nvidia
       deploy:
         resources:
@@ -50,7 +53,9 @@ services:
         pip install -e . && \
         python -m app.run.train --config ./app/config/train.yaml --epochs 32 --device 0 --batch 64
         "
-    webui:
+
+    paw_web:
+      container_name: paw_webui
       image: webui:latest
       build:
         context: .
@@ -58,6 +63,22 @@ services:
       ports:
         - "5000:5000"
       volumes:
-        - ./webui/:/app/
+        - /tmp/webui/results/:/results/
+        - /tmp/webui/uploads/:/uploads/
       stdin_open: True
-      entrypoint: ["python", "app.py"]
+#      entrypoint: ["python", "app.py"]
+
+    paw_api:
+      container_name: paw_api
+      image: paw_api:latest
+      build:
+        context: .
+        dockerfile: api/Dockerfile
+      ports:
+        - "7000:7000"
+      volumes:
+        - /tmp/webui/results/:/results/
+        - /tmp/webui/uploads/:/uploads/
+        - /fastio/tmp/output/snooty_nectarous/train/weights/:/weights/
+      stdin_open: True
+#      entrypoint: ["python", "app.py"]

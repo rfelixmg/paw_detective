@@ -13,9 +13,36 @@ header {
     position: relative;
 }
 
-/*header {*/
-/*    position: relative;  !* necessary for absolute positioning of child elements *!*/
-/*}*/
+/*  .header {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+/*  }*/
+
+/*  .header h1,*/
+/*  .header h3 {*/
+/*    margin: 10px 0;*/
+/*  }*/
+
+/*  .header-logo {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin-bottom: 20px;*/
+/*  }*/
+
+/*  .header-logo img {*/
+/*    width: 64px;*/
+/*    height: 64px;*/
+/*    margin-right: 10px;*/
+/*  }*/
+
+/*  .header-logo a {*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*    font-size: 18px;*/
+/*  }*/
 
 #header-img {
     position: absolute;
@@ -24,7 +51,39 @@ header {
     width: 244px;  /* adjust as necessary */
     height: auto;
 }
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+.header h1,
+.header h3 {
+    margin: 10px 0;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: absolute;
+    width: 25%;
+    left: 10px;
+}
+
+.header-logo img {
+    width: 64px;
+    height: 64px;
+    margin-right: 10px;
+}
+
+.header-logo a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin: 5px;
+}
 
 h1, h2 {
     color: #333;
@@ -38,9 +97,14 @@ h1, h2 {
 
 .results-section {
     background-color: #d9edf7;
+    height: 100%; /* Set the height to 100% of its container */
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
+    overflow-y: auto; /* Add vertical scroll if the content exceeds the height */
+
+}
+.results-section {
 }
 
 footer {
@@ -48,7 +112,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
 }
@@ -58,9 +122,12 @@ footer {
     max-width: 100%;
     height: auto;
 }
+
 .image-section {
     text-align: center;
     margin: 20px;
+        justify-content: center; /* Align items horizontally in the center */
+    align-items: center;
 }
 
 .image-section img {
@@ -74,14 +141,27 @@ footer {
     display: inline-block;  /* make the div only as wide as the image inside it */
     border: 8px solid #555;  /* adjust border width and color as necessary */
     border-radius: 10px;  /* adjust for roundness of corners */
-    margin-top: 20px;  /* adjust as necessary */
+    margin-top: 40px;  /* adjust as necessary */
 }
 
-#displayed-image {
-    display: block;  /* remove bottom margin/whitespace */
-    max-width: 100%;  /* make image responsive */
-    height: auto;
+.img-wrapper-results {
+    display: inline-flex;  /* make the div only as wide as the image inside it */
+    border: 8px solid #555;  /* adjust border width and color as necessary */
+    border-radius: 10px;  /* adjust for roundness of corners */
+    margin-top: 40px;  /* adjust as necessary */
+    width: 60%;
+    justify-content: center; /* Align items horizontally in the center */
+    align-items: center;
 }
+.img-wrapper img {
+    flex: 1; /* Distribute the available space equally between the images */
+    margin-right: 10px; /* Add some spacing between the images (adjust as needed) */
+}
+
+.img-wrapper img:last-child {
+    margin-right: 0; /* Remove the margin from the last image to avoid extra spacing */
+}
+
 
 
 .upload-section {

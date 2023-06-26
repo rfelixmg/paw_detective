@@ -4,18 +4,16 @@
 
 ### Training:
 1. [Dataset configuration](./docs/dataset.md)
-2. [Training model](./docs/dataset.md)
+2. [Weights](./docs/weights.md)
+3. [Training model](./docs/training.md)
 
 
 ### Running
 
 
-### References
-1. [Towards Data Science](https://towardsdatascience.com/trian-yolov8-instance-segmentation-on-your-data-6ffa04b2debd)
-2. [Ultralytics](https://docs.ultralytics.com/datasets/segment/)
-3. [Learn OpenCV](https://learnopencv.com/train-yolov8-on-custom-dataset/)
 
-# Machine Configurations
+
+### Machine Configurations
 ```bash
 NVIDIA-SMI 515.105.01
 Driver Version: 515.105.01
@@ -63,3 +61,9 @@ GPU: NVIDIA GeForce RTX 3070 Laptop GPU, 7982MiB
 | staffordshire_bull_terrier 	| 2205   	| 58        	| 0       	| 0      	| 0.0801 	| 0.0693    	| 0       	| 0      	| 0.0801 	| 0.0665    	|
 | wheaten_terrier            	| 2205   	| 62        	| 0       	| 0      	| 0.0459 	| 0.0379    	| 0       	| 0      	| 0.0446 	| 0.0371    	|
 | yorkshire_terrier          	| 2205   	| 63        	| 0.0398  	| 0.0476 	| 0.0412 	| 0.0341    	| 0.0398  	| 0.0476 	| 0.0412 	| 0.0338    	|
+
+
+### References
+1. [Towards Data Science](https://towardsdatascience.com/trian-yolov8-instance-segmentation-on-your-data-6ffa04b2debd)
+2. [Ultralytics](https://docs.ultralytics.com/datasets/segment/)
+3. [Learn OpenCV](https://learnopencv.com/train-yolov8-on-custom-dataset/)
