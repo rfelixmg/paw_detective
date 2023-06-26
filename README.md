@@ -1,6 +1,9 @@
 # Paw Detective
 
-Paw Detective is a pet detection system that utilizes Ultralytics and YOLOv8 to detect and classify various pet breeds in images. This repository provides a complete training pipeline, data processing utilities, and a Flask application for online interaction with the trained model.
+Paw Detective is a pet detection system that utilizes Ultralytics and YOLOv8 to detect
+and classify various pet breeds in images. This repository provides a complete training
+pipeline, data processing utilities, and a Flask application for online interaction with
+the trained model.
 
 # TL;DR <a name="tldr"></a>
 ### Training:
