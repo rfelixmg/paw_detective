@@ -51,7 +51,7 @@ services:
       command:
         bash -c "
         pip install -e . && \
-        python -m app.run.train --config ./app/config/train.yaml --epochs 32 --device 0 --batch 64
+        python -m app.run.train --config ./app/config/train.yaml --epochs 100 --device 0 --batch 64
         "
 
     paw_web:
