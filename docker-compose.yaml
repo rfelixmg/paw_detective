@@ -63,8 +63,8 @@ services:
       ports:
         - "5000:5000"
       volumes:
-        - /tmp/webui/results/:/results/
-        - /tmp/webui/uploads/:/uploads/
+        - ${OUTPUTDIR}:/results/
+        - ${DATADIR}:/uploads/
       stdin_open: True
 #      entrypoint: ["python", "app.py"]
 
@@ -77,8 +77,8 @@ services:
       ports:
         - "7000:7000"
       volumes:
-        - /tmp/webui/results/:/results/
-        - /tmp/webui/uploads/:/uploads/
-        - /fastio/tmp/output/snooty_nectarous/train/weights/:/weights/
+        - ${OUTPUTDIR}:/results/
+        - ${DATADIR}:/uploads/
+        - ${WEIGHTS}:/weights/
       stdin_open: True
 #      entrypoint: ["python", "app.py"]

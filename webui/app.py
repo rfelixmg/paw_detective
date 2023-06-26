@@ -31,6 +31,7 @@ def home() -> render_template:
 
 @app.route("/results", methods=["POST"])
 def get_results() -> render_template:
+    copy("/app/static/images/example.jpg", "/app/static/uploads/example.jpg")
     if "file" not in request.files:
         return "No file part"
 
@@ -48,6 +49,7 @@ def get_results() -> render_template:
     app.logger.info(results)
     fname = results[0]["output_src"]
     copy(f"/results/{fname}", "/app/static/results/")
+    copy(f"/uploads/{filename}", f"/app/static/uploads/{filename}")
 
     response = make_response(
         render_template("results.html", image_filename=filename, results=results)

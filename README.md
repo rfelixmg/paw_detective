@@ -36,7 +36,7 @@ paw_detective/
 ├── scripts/
 │ ├── dataset.sh
 │ ├── train.sh
-│ ├── web.sh
+│ ├── application.sh
 │ ├── weights.sh
 ├── src/
 │ ├── paw/
@@ -68,22 +68,43 @@ To use the Paw Detective system, follow these steps:
 
 2. Use docker-compose for building all the images:
 
+   - `.env` file:
+   ```bash
+   # Training .env
+   DATASET_DIR=   # processed dataset directory {train, val, test} sub-folders
+   WEIGHTS=       # directory to save YoLOV8 pre-trained weights
+   OUTPUT_DIR=    # directory to save ultralytics training
+
+   # Application .env
+   DATADIR=       #directory for Flask upload images
+   OUTPUTDIR=     #directory for Flask result images
+   WEIGHTS=       #directory with latest weights (best.pt)
+   ```
+
    ```bash
    docker compose build
    ```
 
 3. Refer to the section [TL;DR](#tldr) to setup the environment, or use the following scripts.
 
-```bash
-bash ./scripts/dataset.sh
-bash ./scripts/weights.sh
-bash ./scripts/train.sh
-bash ./scripts/web.sh
-```
+   For running the application with our pre-trained models:
+   ```bash
+   bash ./scripts/weights.sh
+   bash ./scripts/application.sh
+   ```
+
+   For fine-tunning and running the application:
+
+   ```bash
+   bash ./scripts/dataset.sh
+   bash ./scripts/weights.sh
+   bash ./scripts/train.sh
+   bash ./scripts/application.sh
+   ```
 
 4. Access the Flask web application to test the model's performance
 
-> http://localhost:5001
+   > http://localhost:5001
 
 
 ## Machine Configurations
