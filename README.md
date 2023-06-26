@@ -7,6 +7,7 @@ Paw Detective is a pet detection system that utilizes Ultralytics and YOLOv8 to 
 1. [Dataset configuration](./docs/dataset.md)
 2. [Weights](./docs/weights.md)
 3. [Training model](./docs/training.md)
+3. [Flask & fastapi application](./docs/application.md)
 
 
 ## Dataset
@@ -104,7 +105,9 @@ To use the Paw Detective system, follow these steps:
 
 4. Access the Flask web application to test the model's performance
 
-   > http://localhost:5001
+   > http://localhost:5001              # Flask
+   >
+   > http://localhost:7000/docs#        #fastapi
 
 
 ## Machine Configurations

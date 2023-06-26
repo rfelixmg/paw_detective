@@ -235,3 +235,37 @@ hr {
     text-align: center;  /* centers the Investigate button */
     margin-top: 10px;  /* adds space above the Investigate button */
 }
+
+
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.about-box {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  max-width: 500px;
+}
+
+.about-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.about-box p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.upload-section {
+  /* Your existing styles for the upload section */
+}
+
+.image-section {
+  /* Your existing styles for the image section */
+}

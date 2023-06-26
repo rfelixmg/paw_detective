@@ -29,6 +29,11 @@ def home() -> render_template:
     return render_template("index.html")
 
 
+@app.route("/about")
+def about() -> render_template:
+    return render_template("about.html")
+
+
 @app.route("/results", methods=["POST"])
 def get_results() -> render_template:
     copy("/app/static/images/example.jpg", "/app/static/uploads/example.jpg")
