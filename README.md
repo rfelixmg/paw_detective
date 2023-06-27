@@ -11,8 +11,16 @@ the trained model. For a more informative discussion on the project, please refe
 1. [Dataset configuration](./docs/dataset.md)
 2. [Weights](./docs/weights.md)
 3. [Training model](./docs/training.md)
-3. [Flask & fastapi application](./docs/application.md)
+4. [Flask & fastapi application](./docs/application.md)
 
+
+> Home Page
+>
+> ![Home](./docs/src/home.png)
+
+> Results page
+>
+> ![Home](./docs/src/response.png)
 
 
 ## Dataset
