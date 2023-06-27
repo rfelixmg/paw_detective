@@ -13,11 +13,15 @@ architecture: x86_64
 
 
 # TL;DR <a name="tldr"></a>
+
+You might prefer to use a more straightforward approach to reproduce the project using [**scripts**](./docs/scripts.md).
 ### Training:
 1. [Dataset configuration](./docs/dataset.md)
 2. [Weights](./docs/weights.md)
 3. [Training model](./docs/training.md)
 4. [Flask & fastapi application](./docs/application.md)
+
+
 
 
 > Home Page
