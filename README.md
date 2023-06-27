@@ -6,6 +6,12 @@ pipeline, data processing utilities, and a Flask application for online interact
 the trained model. For a more informative discussion on the project, please refer to
 [Flask & fastapi application](./docs/application.md).
 
+Supports:
+```yaml
+architecture: x86_64
+```
+
+
 # TL;DR <a name="tldr"></a>
 ### Training:
 1. [Dataset configuration](./docs/dataset.md)
@@ -127,11 +133,15 @@ To use the Paw Detective system, follow these steps:
 
 The following machine configurations were used for training, and testing of the first version of this repository.
 
-```bash
-NVIDIA-SMI 515.105.01
-Driver Version: 515.105.01
-CUDA Version: 11.7
-GPU: NVIDIA GeForce RTX 3070 Laptop GPU, 7982MiB
+```yaml
+  nvidia: NVIDIA-SMI 515.105.01
+  driver: 515.105.01
+  cuda: 11.7
+  gpu: NVIDIA GeForce RTX 3070 Laptop GPU, 7982MiB
+  distribution: Ubuntu
+  distribution.version: 22.04
+  distribution.name: jammy
+  distribution.description: Ubuntu 22.04 LTS
 ```
 
 # Results
